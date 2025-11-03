@@ -1,0 +1,25 @@
+@font-face {
+    font-family: 'Germania One';
+    src: url('./assets/fonts/GermaniaOne-Regular.woff2') format('woff2'),
+        url('./assets/fonts/GermaniaOne-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Cormorant Garamond";
+    src: url('./assets/fonts/CormorantGaramond-Regular.woff2') format("woff2"),
+        url('./assets/fonts/CormorantGaramond-Regular.woff') format("woff");
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+} 
+
+@import "tailwindcss";
+
+@theme {
+    --font-germania-one: "Germania One", system-ui;
+    --font-cormorant: "Cormorant Garamond", "serif";
+}
+
