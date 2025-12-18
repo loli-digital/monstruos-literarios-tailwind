@@ -14,8 +14,12 @@ La particularidad del proyecto es que al hacer scroll, hay un efecto parallax en
 
 Para ejecutar el proyecto en tu PC: *npm run dev*
 
-# Herramientas utilizadas
+## Herramientas utilizadas
 
 - GitHub Pages para despliegue
 - Para la obtención de las imágenes: Copilot
 - TransparentTextures y DaFont para recursos
+
+---
+## Demo del proyecto
+https://loli-digital.github.io/monstruos-literarios-tailwind/
