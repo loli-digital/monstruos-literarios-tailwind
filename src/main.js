@@ -1,60 +1,89 @@
 import './style.css'
 
-// Botón para menú del móvil
-const menuBtn = document.getElementById('menu-btn');
-  const mobileMenu = document.getElementById('mobile-menu');
-  menuBtn.addEventListener('click', () => {
-    mobileMenu.classList.toggle('hidden');
+const socialIcons = document.querySelector(".social-icons");
+const menuBtn = document.getElementById("menu-btn");
+const mobileMenu = document.getElementById("mobile-menu");
+const openBtn = document.getElementById("open-menu");
+const closeBtn = document.getElementById("close-menu");
+const menuLinks = mobileMenu.querySelectorAll("a");
+
+menuBtn.addEventListener("click", () => {
+
+  mobileMenu.classList.toggle("hidden");
+
+  if (mobileMenu.classList.contains("hidden")) {
+
+    openBtn.classList.remove("hidden");
+    closeBtn.classList.add("hidden");
+    socialIcons.classList.add("hidden");
+
+  } else {
+    
+    openBtn.classList.add("hidden");
+    closeBtn.classList.remove("hidden");
+    socialIcons.classList.remove("hidden");
+  }
+});
+
+// Cerrar al hacer clic en un link
+menuLinks.forEach(link => {
+  link.addEventListener("click", () => {
+    mobileMenu.classList.add("hidden");
+    openBtn.classList.remove("hidden");
+    closeBtn.classList.add("hidden");
+    socialIcons.classList.add("hidden");
   });
+});
 
 //Efecto parallax en monstruos
 
 const sections = document.querySelectorAll(".parallax-section");
+const isMobile = window.innerWidth < 1024;
 
-window.addEventListener("scroll", () => {
-  const scrollY = window.scrollY;
-  const viewportHeight = window.innerHeight;
+if (!isMobile) {
+  window.addEventListener("scroll", () => {
+    const scrollY = window.scrollY;
+    const viewportHeight = window.innerHeight;
 
-  sections.forEach(section => {
-    const rect = section.getBoundingClientRect();
-    const offsetTop = rect.top + scrollY;
+    sections.forEach(section => {
+      const rect = section.getBoundingClientRect();
+      const offsetTop = rect.top + scrollY;
 
-    // Solo animar cuando la sección está visible
-    if (
-      scrollY + viewportHeight > offsetTop &&
-      scrollY < offsetTop + section.offsetHeight
-    ) {
-      const progress = scrollY - offsetTop;
+      if (
+        scrollY + viewportHeight > offsetTop &&
+        scrollY < offsetTop + section.offsetHeight
+      ) {
+        const progress = scrollY - offsetTop;
 
-      // Fondo (más lento)
-      section.style.backgroundPositionY = `${progress * 0.3}px`;
+        const bgSpeed = parseFloat(section.dataset.bg) || 0.3;
+        const monsterSpeed = parseFloat(section.dataset.monster) || -0.15;
 
-      // Monstruo (ligero efecto flotante)
-      const monster = section.querySelector(".monster img");
-      if (monster) {
-        monster.style.transform = `translateY(${progress * -0.15}px)`;
+        section.style.backgroundPositionY = `${progress * bgSpeed}px`;
+
+        const monster = section.querySelector(".monster img");
+        if (monster) {
+          monster.style.transform = `translateY(${progress * monsterSpeed}px)`;
+        }
       }
-    }
-  });
-});
-
-//Velocidad imagen monstruo
-
-const bgSpeed = parseFloat(section.dataset.bg) || 0.3;
-const monsterSpeed = parseFloat(section.dataset.monster) || -0.15;
-
-section.style.backgroundPositionY = `${progress * bgSpeed}px`;
-monster.style.transform = `translateY(${progress * monsterSpeed}px)`;
-
-
-// Para desactivar parallax en modo móvil
-if (window.innerWidth < 768) {
-  sections.forEach(section => {
-    section.style.backgroundPositionY = "0px";
-    const monster = section.querySelector(".monster img");
-    if (monster) monster.style.transform = "none";
+    });
   });
 }
+
+if (isMobile) {
+  sections.forEach(section => {
+    section.style.backgroundPositionY = "center";
+
+    const monster = section.querySelector(".monster img");
+    if (monster) {
+      monster.style.transform = "none";
+    }
+  });
+}
+
+window.addEventListener("resize", () => {
+  location.reload();
+});
+
 
 // Año actual
 const fecha = document.querySelector(".current-year");
