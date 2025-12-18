@@ -13,3 +13,9 @@ La particularidad del proyecto es que al hacer scroll, hay un efecto parallax en
 ![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-06B6D4?style=for-the-badge&logo=tailwind-css&logoColor=white)
 
 Para ejecutar el proyecto en tu PC: *npm run dev*
+
+# Herramientas utilizadas
+
+- GitHub Pages para despliegue
+- Para la obtención de las imágenes: Copilot
+- TransparentTextures y DaFont para recursos
