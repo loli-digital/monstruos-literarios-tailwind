@@ -17,7 +17,7 @@ Para ejecutar el proyecto en tu PC: *npm run dev*
 ## Herramientas utilizadas
 
 - GitHub Pages para despliegue
-- Para la obtención de las imágenes: Copilot
+- Copilot para la obtención de las imágenes
 - TransparentTextures y DaFont para recursos
 
 ---
